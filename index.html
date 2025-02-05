@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html>
-
-  <head>
-
-    <title>
-      My profile
-    </title>
-  </head>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <h1>
-    profile of sigma male almasuly abilay 10C nagibator tigr lev nash sloniara 3000 neo
-  </h1>
-  <img src = "Sukhoi_Design_Bureau,_054,_Sukhoi_Su-57_(49581303977).jpg"/>
+    <section id="home" class="hero">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Full Stack Developer</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="generated-icon.png" alt="Profile Picture">
+            <p>I'm a passionate developer with expertise in web development. I love creating elegant solutions to complex problems.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Project 1</h3>
+                <p>A web application built with React</p>
+            </div>
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>An e-commerce platform</p>
+            </div>
+            <div class="project-card">
+                <h3>Project 3</h3>
+                <p>Mobile app development</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
 </body>
-  <table>
-    <th> Name </th>
-
-    <th> Age </th>
-
-    <th> Email </th>
-
-    <tr>
-      <td> Abilay lev tiger </td>
-
-      <td> 16 </td>
-
-      <td> batman@gmail.com </td>
-      
-    </tr>
-
-    <ul>
-      <li>
-        Sigmaboy
-      </li>
-
-      <li>
-        Naiman
-      </li>
-
-      <li>
-        top1kazakhstana
-      </li>
-
-      <li>
-        got5inEnglish
-      </li>
-      
-    </ul>
-
-  </table>
-  
 </html>
