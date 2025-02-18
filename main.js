@@ -1,59 +1,74 @@
-const translations = {
-    en: {
-        name: "Emil",
-        tagline: "Software Developer & Sports Enthusiast",
-        about_title: "About Me",
-        about_text: "Passionate about technology and innovation, I bring creative solutions to complex problems. With extensive experience in software development, I constantly strive to learn and grow in this ever-evolving field.",
-        hobbies_title: "Hobbies",
-        volleyball_title: "Volleyball",
-        volleyball_text: "Competitive volleyball player with a passion for team sports and strategic gameplay.",
-        gaming_title: "Gaming",
-        gaming_text: "Professional OSU player with achievements in competitive gameplay.",
-        professional_title: "Professional Experience",
-        skills_title: "Skills",
-        skill_1: "Web Development",
-        skill_2: "Mobile Development",
-        skill_3: "Cloud Computing",
-        experience_title: "Work Experience",
-        job_1_title: "Professional OSU Player",
-        job_1_description: "Competing at the highest level in OSU tournaments and championships."
-    },
-    ru: {
-        name: "Эмиль",
-        tagline: "Разработчик ПО и Спортивный Энтузиаст",
-        about_title: "Обо мне",
-        about_text: "Увлечен технологиями и инновациями, я создаю креативные решения сложных задач. Имея обширный опыт в разработке ПО, я постоянно стремлюсь учиться и развиваться в этой постоянно меняющейся области.",
-        hobbies_title: "Увлечения",
-        volleyball_title: "Волейбол",
-        volleyball_text: "Игрок в волейбол, увлеченный командными видами спорта и стратегической игрой.",
-        gaming_title: "Гейминг",
-        gaming_text: "Профессиональный игрок в OSU с достижениями в соревновательных играх.",
-        professional_title: "Профессиональный Опыт",
-        skills_title: "Навыки",
-        skill_1: "Веб-разработка",
-        skill_2: "Мобильная разработка",
-        skill_3: "Облачные вычисления",
-        experience_title: "Опыт работы",
-        job_1_title: "Профессиональный игрок OSU",
-        job_1_description: "Участие в турнирах и чемпионатах OSU высшего уровня."
-    },
-    kk: {
-        name: "Эмиль",
-        tagline: "Бағдарламалық жасақтама әзірлеуші және Спорт әуесқойы",
-        about_title: "Мен туралы",
-        about_text: "Технология мен инновацияға құштар, күрделі мәселелерге креативті шешімдер ұсынамын. Бағдарламалық жасақтама әзірлеудегі кең тәжірибеммен үнемі дамып келе жатқан салада оқып, өсуге тырысамын.",
-        hobbies_title: "Хоббилер",
-        volleyball_title: "Волейбол",
-        volleyball_text: "Командалық спорт түрлері мен стратегиялық ойынға құштар волейболшы.",
-        gaming_title: "Гейминг",
-        gaming_text: "Жарыстық ойындарда жетістіктері бар кәсіби OSU ойыншысы.",
-        professional_title: "Кәсіби тәжірибе",
-        skills_title: "Дағдылар",
-        skill_1: "Веб-әзірлеу",
-        skill_2: "Мобильді әзірлеу",
-        skill_3: "Бұлттық есептеу",
-        experience_title: "Жұмыс тәжірибесі",
-        job_1_title: "Кәсіби OSU ойыншысы",
-        job_1_description: "OSU турнирлері мен чемпионаттарында жоғары деңгейде өнер көрсету."
+document.addEventListener('DOMContentLoaded', function() {
+    // Default language
+    let currentLang = 'en';
+
+    // Language switcher functionality
+    const languageButtons = document.querySelectorAll('.language-switcher button');
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        const elements = document.querySelectorAll('[data-translate]');
+
+        elements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update active button state
+        languageButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Save language preference
+        localStorage.setItem('preferredLanguage', lang);
     }
-};
+
+    // Add click event listeners to language buttons
+    languageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            console.log('Switching to language:', lang);
+            setLanguage(lang);
+        });
+    });
+
+    // Load saved language preference or default to English
+    const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+    setLanguage(savedLang);
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        observer.observe(section);
+    });
+});
