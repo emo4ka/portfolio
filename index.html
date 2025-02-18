@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emil's Portfolio</title>
     <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -14,7 +13,6 @@
         <div class="btn-group" role="group" aria-label="Language switcher">
             <button type="button" class="btn btn-secondary" data-lang="en">EN</button>
             <button type="button" class="btn btn-secondary" data-lang="ru">RU</button>
-            <button type="button" class="btn btn-secondary" data-lang="kk">KK</button>
         </div>
     </div>
 
@@ -22,7 +20,7 @@
     <header class="hero-section vh-100 d-flex align-items-center">
         <div class="container">
             <h1 class="display-1 fw-bold" data-translate="name">Emil</h1>
-            <p class="lead" data-translate="tagline">Software Developer & Sports Enthusiast</p>
+            <p class="lead" data-translate="profession">Doctor</p>
         </div>
     </header>
 
@@ -32,30 +30,22 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <h2 class="mb-4" data-translate="about_title">About Me</h2>
-                    <p class="lead" data-translate="about_text">Passionate about technology and innovation...</p>
+                    <p class="lead" data-translate="about_text">Professional doctor passionate about healthcare and helping others.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Hobbies Section -->
-    <section id="hobbies" class="py-5 bg-dark">
+    <!-- Sports Section -->
+    <section id="sports" class="py-5 bg-dark">
         <div class="container">
-            <h2 class="text-center mb-5" data-translate="hobbies_title">Hobbies</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
+            <h2 class="text-center mb-5" data-translate="sports_title">Sports</h2>
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card h-100">
                         <div class="card-body">
                             <h3 class="card-title" data-translate="volleyball_title">Volleyball</h3>
-                            <p class="card-text" data-translate="volleyball_text">Competitive volleyball player...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title" data-translate="gaming_title">Gaming</h3>
-                            <p class="card-text" data-translate="gaming_text">Professional OSU player...</p>
+                            <p class="card-text" data-translate="volleyball_text">Passionate volleyball player with experience in competitive matches.</p>
                         </div>
                     </div>
                 </div>
@@ -63,36 +53,13 @@
         </div>
     </section>
 
-    <!-- Professional Section -->
-    <section id="professional" class="py-5">
+    <!-- Github Section -->
+    <section id="github" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5" data-translate="professional_title">Professional Experience</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title" data-translate="skills_title">Skills</h3>
-                            <ul class="list-unstyled">
-                                <li data-translate="skill_1">Web Development</li>
-                                <li data-translate="skill_2">Mobile Development</li>
-                                <li data-translate="skill_3">Cloud Computing</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title" data-translate="experience_title">Work Experience</h3>
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <h4 data-translate="job_1_title">Professional OSU Player</h4>
-                                    <p data-translate="job_1_description">Competing at the highest level in OSU tournaments...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="text-center mb-5" data-translate="github_title">Github Profile</h2>
+            <div class="text-center">
+                <h3 class="mb-3" data-translate="github_username">emil</h3>
+                <p class="lead" data-translate="github_description">Check out my projects and contributions on Github</p>
             </div>
         </div>
     </section>
