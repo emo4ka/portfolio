@@ -1,65 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Emil's Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <nav>
-        <div class="logo">Portfolio</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <p>emo4kapro</p>
-    </section>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <img src="generated-icon.png" alt="Profile Picture">
-            <p>Osu player, biochem student.</p>
+    <!-- Language Switcher -->
+    <div class="language-switcher position-fixed top-0 end-0 m-3">
+        <div class="btn-group">
+            <button class="btn btn-secondary" data-lang="en">EN</button>
+            <button class="btn btn-secondary" data-lang="ru">RU</button>
+            <button class="btn btn-secondary" data-lang="kk">KK</button>
         </div>
-    </section>
+    </div>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Project 1</h3>
-                <p>toilet</p>
-            </div>
-            <div class="project-card">
-                <h3>Project 2</h3>
-                <p>tuavelt</p>
-            </div>
-            <div class="project-card">
-                <h3>Project 3</h3>
-                <p>sigma</p>
+    <!-- Header Section -->
+    <header class="hero-section vh-100 d-flex align-items-center">
+        <div class="container">
+            <h1 class="display-1 fw-bold" data-translate="name">Emil</h1>
+            <p class="lead" data-translate="tagline">Software Developer & Sports Enthusiast</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <h2 class="mb-4" data-translate="about_title">About Me</h2>
+                    <p class="lead" data-translate="about_text">Passionate about technology and innovation...</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5" data-translate="hobbies_title">Hobbies</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1642506539221-8019a4cd44cb" class="card-img-top" alt="Volleyball">
+                        <div class="card-body">
+                            <h3 class="card-title" data-translate="volleyball_title">Volleyball</h3>
+                            <p class="card-text" data-translate="volleyball_text">Competitive volleyball player...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2" class="card-img-top" alt="Gaming">
+                        <div class="card-body">
+                            <h3 class="card-title" data-translate="gaming_title">Gaming</h3>
+                            <p class="card-text" data-translate="gaming_text">Enthusiastic gamer...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 1488 My Portfolio. All rights reserved.</p>
-    </footer>
+    <!-- Professional Section -->
+    <section id="professional" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-translate="professional_title">Professional Experience</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title" data-translate="skills_title">Skills</h3>
+                            <ul class="list-unstyled">
+                                <li data-translate="skill_1">Web Development</li>
+                                <li data-translate="skill_2">Mobile Development</li>
+                                <li data-translate="skill_3">Cloud Computing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title" data-translate="experience_title">Work Experience</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h4 data-translate="job_1_title">Senior Developer</h4>
+                                    <p data-translate="job_1_description">Leading development teams...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
