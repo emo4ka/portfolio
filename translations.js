@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Default language
+    
     let currentLang = localStorage.getItem('preferredLanguage') || 'en';
 
-    // Language switcher functionality
+    
     const languageButtons = document.querySelectorAll('.language-switcher button');
 
     function setLanguage(lang) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update active button state
+        
         languageButtons.forEach(btn => {
             btn.classList.remove('active');
             if (btn.getAttribute('data-lang') === lang) {
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Save language preference
+        
         localStorage.setItem('preferredLanguage', lang);
     }
 
-    // Add click event listeners to language buttons
+    
     languageButtons.forEach(button => {
         button.addEventListener('click', function() {
             const lang = this.getAttribute('data-lang');
@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Set initial language
+    
     setLanguage(currentLang);
 
-    // Add scroll animations
+    
     const observerOptions = {
         threshold: 0.1
     };
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe all sections
+    
     document.querySelectorAll('section').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
