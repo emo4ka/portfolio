@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const languageButtons = document.querySelectorAll(".language-switcher .btn");
     const elementsToTranslate = document.querySelectorAll("[data-translate]");
-    const jsonURL = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/translations.json"; // Update with your GitHub repo details
+    const jsonURL = "https://raw.githubusercontent.com/emo4ka/portfolio/main/translations.json"; // Update with your GitHub repo details
 
     function setLanguage(lang, translations) {
         localStorage.setItem("selectedLanguage", lang);
