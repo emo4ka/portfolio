@@ -1,43 +1,39 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'; connect-src 'self' http://localhost:3000");
+    res.setHeader("Permissions-Policy", "");
+    next();
+});
 
-// Подключение к MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log("MongoDB connected"))
-  .catch(err => console.error(err));
+app.use(cors());
+app.use(bodyParser.json());
 
-// Модель для вопросов
-const QuestionSchema = new mongoose.Schema({
+// Подключение к MongoDB (убедись, что MongoDB запущен)
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+// Создание схемы и модели
+const questionSchema = new mongoose.Schema({
     name: String,
     email: String,
-    message: String,
+    question: String,
     date: { type: Date, default: Date.now }
 });
 
-const Question = mongoose.model('Question', QuestionSchema);
+const Question = mongoose.model('Question', questionSchema);
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// API для сохранения вопроса
+// Маршрут для сохранения вопроса
 app.post('/api/questions', async (req, res) => {
-    try {
-        const { name, email, message } = req.body;
-        const newQuestion = new Question({ name, email, message });
-        await newQuestion.save();
-        res.status(201).json({ message: 'Question submitted successfully' });
-    } catch (error) {
-        res.status(500).json({ error: 'Server error' });
-    }
+    console.log(req.body); // Выведет данные в консоль
+    const newQuestion = new Question(req.body);
+    await newQuestion.save();
+    res.json({ message: 'Your question has been saved!' });
 });
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
+app.use(express.static('public'));
+// Запуск сервера
+app.listen(3000, () => console.log('Server is running on http://localhost:3000'));
