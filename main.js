@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('preferredLanguage', lang);
     }
 
-    // Add click event listeners to language buttons
+   
     languageButtons.forEach(button => {
         button.addEventListener('click', function() {
             const lang = this.getAttribute('data-lang');
@@ -56,17 +56,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Set initial language
+   
     setLanguage(currentLang);
 
-    // Dark/Light mode toggle
+  
     const modeSwitch = document.getElementById('modeSwitch');
     modeSwitch.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
         document.body.classList.toggle('light-mode');
     });
 
-    // Set initial mode
+
     if (!document.body.classList.contains('dark-mode')) {
         document.body.classList.add('light-mode');
     }
