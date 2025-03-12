@@ -1,26 +1,53 @@
-{
-    "en": {
-        "name": "Emil",
-        "profession": "Doctor",
-        "about_title": "About Me",
-        "about_text": "Professional doctor passionate about healthcare and helping others.",
-        "sports_title": "Sports",
-        "volleyball_title": "Volleyball",
-        "volleyball_text": "Passionate volleyball player with experience in competitive matches.",
-        "github_title": "Github Profile",
-        "github_username": "emil",
-        "github_description": "Check out my projects and contributions on Github"
-    },
-    "ru": {
-        "name": "Эмиль",
-        "profession": "Доктор",
-        "about_title": "Обо мне",
-        "about_text": "Профессиональный врач, увлеченный здравоохранением и помощью людям.",
-        "sports_title": "Спорт",
-        "volleyball_title": "Волейбол",
-        "volleyball_text": "Увлеченный волейболист с опытом участия в соревнованиях.",
-        "github_title": "Профиль на Github",
-        "github_username": "эмиль",
-        "github_description": "Ознакомьтесь с моими проектами и вкладом на Github"
+document.addEventListener('DOMContentLoaded', function() {
+    // Default language
+    let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+
+    // Language switcher functionality
+    const languageButtons = document.querySelectorAll('.language-switcher button');
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        const elements = document.querySelectorAll('[data-translate]');
+
+        elements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update active button state
+        languageButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Save language preference
+        localStorage.setItem('preferredLanguage', lang);
     }
-}
+
+    // Add click event listeners to language buttons
+    languageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+
+    // Set initial language
+    setLanguage(currentLang);
+
+    // Dark/Light mode toggle
+    const modeSwitch = document.getElementById('modeSwitch');
+    modeSwitch.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+    });
+
+    // Set initial mode
+    if (!document.body.classList.contains('dark-mode')) {
+        document.body.classList.add('light-mode');
+    }
+});
