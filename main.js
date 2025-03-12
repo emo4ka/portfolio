@@ -1,8 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Default language
+    
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        
+        console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+        
+    
+        const responseMessage = document.getElementById('responseMessage');
+        responseMessage.textContent = "Thank you for your message, " + name + "!";
+        responseMessage.style.color = "green";
+
+        contactForm.reset();
+    });
+    
+ 
+});document.addEventListener('DOMContentLoaded', function() {
+   
     let currentLang = localStorage.getItem('preferredLanguage') || 'en';
 
-    // Language switcher functionality
     const languageButtons = document.querySelectorAll('.language-switcher button');
 
     function setLanguage(lang) {
@@ -16,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update active button state
+      
         languageButtons.forEach(btn => {
             btn.classList.remove('active');
             if (btn.getAttribute('data-lang') === lang) {
@@ -24,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Save language preference
+        
         localStorage.setItem('preferredLanguage', lang);
     }
 
